@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30マスすごろく</title>
+  <link rel="stylesheet" href="./player.css">
+</head>
+<body>
+  <main class="game">
+    <h1>30マスすごろく</h1>
+    <section id="board" class="board" aria-label="すごろく盤面"></section>
+
+    <div class="controls">
+      <label for="playerCount">プレイヤー人数</label>
+      <select id="playerCount" aria-label="プレイヤー人数">
+        <option value="1">1人</option>
+        <option value="2">2人</option>
+        <option value="3">3人</option>
+        <option value="4">4人</option>
+      </select>
+      <button id="applyPlayersBtn" type="button">人数を反映</button>
+      <button id="rollBtn" type="button">サイコロを振る</button>
+      <button id="restartBtn" type="button">最初から</button>
+    </div>
+
+    <section class="status">
+      <div>現在プレイヤー: <strong id="currentPlayer">P1</strong></div>
+      <div>現在位置: <strong id="position">P1: 0</strong></div>
+      <div>出目: <strong id="dice">-</strong></div>
+      <div class="dice-visual"><img id="diceImage" alt="サイコロ画像" /></div>
+      <div id="message">サイコロを振ってスタート！</div>
+      <div id="result" class="result"></div>
+    </section>
+
+    <section id="logs" class="logs" aria-live="polite"></section>
+  </main>
+  <script src="./player.js"></script>
+</body>
+</html>

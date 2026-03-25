@@ -1,0 +1,63 @@
+以下の仕様で、CSSとJSを含む単一ファイルの `player.html` を生成してください。
+
+## 出力形式
+- 出力ファイル: `player.html`
+- `<!DOCTYPE html>` から始まる完全なHTMLファイル
+- 言語は `lang="ja"`
+- `<meta charset="UTF-8">` と `<meta name="viewport" content="width=device-width, initial-scale=1.0">` を含める
+- `<title>` は `30マスすごろく`
+- CSSは `<style>` タグ内に記述する
+- JSは `<script>` タグ内に記述する
+- 外部ファイル参照（`player.css` / `player.js`）は使わない
+
+## 画面構造
+- `<main class="game">` をルートコンテンツにする
+- 先頭に `<h1>30マスすごろく</h1>` を配置
+- 盤面領域:
+  - `<section id="board" class="board" aria-label="すごろく盤面"></section>`
+
+## 操作エリア（.controls）
+- プレイヤー人数ラベル: `<label for="playerCount">プレイヤー人数</label>`
+- 人数セレクト:
+  - `<select id="playerCount" aria-label="プレイヤー人数">`
+  - options: `1人, 2人, 3人, 4人`（値は `1..4`）
+- ボタン3つ（すべて `type="button"`）
+  - `id="applyPlayersBtn"` / テキスト: `人数を反映`
+  - `id="rollBtn"` / テキスト: `サイコロを振る`
+  - `id="restartBtn"` / テキスト: `最初から`
+
+## ステータスエリア（.status）
+- 現在プレイヤー表示:
+  - `現在プレイヤー: <strong id="currentPlayer">P1</strong>`
+- 現在位置表示:
+  - `現在位置: <strong id="position">P1: 0</strong>`
+- 出目表示:
+  - `出目: <strong id="dice">-</strong>`
+- サイコロ画像:
+  - `<div class="dice-visual"><img id="diceImage" alt="サイコロ画像" /></div>`
+- メッセージ:
+  - `<div id="message">サイコロを振ってスタート！</div>`
+- 順位表示領域:
+  - `<div id="result" class="result"></div>`
+
+## ログエリア
+- `<section id="logs" class="logs" aria-live="polite"></section>`
+
+## JS要件（実装方針）
+- 30マスのすごろく（START=0, GOAL=30）
+- プレイヤー人数は1〜4人を切替可能
+- ターン制でサイコロを振り、駒を進める
+- 出目表示とサイコロ画像を更新する
+- ゲームログを追加表示する
+- 盤面上にプレイヤー位置を描画する
+- ゲームをリスタートできる
+
+## CSS要件（実装方針）
+- `.game`, `.board`, `.cell`, `.controls`, `.status`, `.logs`, `.player` を定義
+- START/GOALセルの見た目を変える
+- プレイヤーごとに色を変える
+- サイコロ表示エリア（`.dice-visual`）を整える
+
+## 注意
+- 上記の `id` / `class` / テキストはそのまま一致させる
+- DOM構造はシンプルに保ち、余分な要素を追加しない
